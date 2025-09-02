@@ -1,0 +1,45 @@
+﻿<div class="container">
+	<h3 class="mb-3 text-center">請輸入姓名</h3>
+	<div class="form-floating mb-3">
+		<input id="name" class="form-control" placeholder="" />
+		<label class="form-label">姓名</label>
+	</div>
+	<div id="result" class="mb-3"></div>
+</div>
+
+@section Scripts
+{
+	<script>
+		var baseAddress="https://localhost:7078"; //開發階段Developint
+		//var baseAddress="https://XXXX"; //Staging
+		//var baseAddress="https://XXXX"; //Production
+
+		$("#name").on("keyup",async()=>{
+			// alert("keyup");
+			try{
+				var form=new FormData();
+				form.append("Name",$("#name").val());
+				var response=await fetch(`${baseAddress}/Ajax/CheckName`,{
+				method:"POST",
+				body:form
+				});
+				if(response.ok){
+					var data=await response.text();
+					if(data=="true"){
+					$("#result").text("查有此人");
+					}
+					else{
+						$("#result").text("查NO此人");
+					}
+				}
+			}
+			catch(err){
+				alert(err.message);
+			}
+
+
+		});
+
+	</script>
+
+}
