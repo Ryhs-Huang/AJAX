@@ -4,24 +4,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-WebFront-c7547e2f-3e98-46ad-b063-7b117eedfa9f</UserSecretsId>
+    <UserSecretsId>aspnet-WebFront-c3ed681e-d6ce-42ab-9ce3-7a96899a522a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EfCore.SchemaCompare" Version="8.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.19" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.19" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.19" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.19">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.19" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.19" />
+    <None Include="efpt.config.json.user" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Ajax\" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.19" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.19" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.19" />
   </ItemGroup>
 
 </Project>

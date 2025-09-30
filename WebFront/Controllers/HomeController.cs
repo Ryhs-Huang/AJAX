@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebFront.Models;
 
@@ -23,22 +24,54 @@ namespace WebFront.Controllers
             return View();
         }
 
-        //Get: Home/Greet
+        // GET: Home/Employee
         [HttpGet]
-		public IActionResult Greet()
-		{
+        public IActionResult Employee()
+        {
             return View();
-		}
+        }
 
-		//Get: Home/CheckName
+        // GET: Home/Greet
+        [HttpGet]
+        public IActionResult Greet()
+        {
+            return View();
+        }
+
+		// GET: Home/Basic
 		[HttpGet]
-		public IActionResult CheckName()
+		public IActionResult Basic()
 		{
 			return View();
 		}
 
+		// GET: Home/Rate
+		[HttpGet]
+		public IActionResult Rate()
+		{
+			return View();
+		}
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		// GET: Home/GetExchangeRate
+		[HttpGet]
+        public async Task<string> GetExchangeRate() {
+            string Uri = "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates";
+            HttpClient Client = new HttpClient();
+            HttpResponseMessage Response = await Client.GetAsync(Uri);
+            Response.EnsureSuccessStatusCode();
+            string Data = await Response.Content.ReadAsStringAsync();
+			return Data;
+
+		}
+
+		// GET: Home/CheckName
+		[HttpGet]
+        public IActionResult CheckName()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

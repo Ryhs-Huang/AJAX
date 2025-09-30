@@ -3,52 +3,51 @@ using WebFront.Models;
 
 namespace WebFront.Controllers
 {
-	public class AjaxController : Controller
-	{
-		NorthwindContext _context;
-		public AjaxController(NorthwindContext context)
-		{
-			_context = context;
-		}
+    public class AjaxController : Controller
+    {
+        NorthwindContext _context;
+        public AjaxController(NorthwindContext context)
+        {
+            _context = context;
+        }
 
-		//Get: Ajax/Greet
-		[HttpGet]
-		public string Greet(string Name)
-		{
-			Thread.Sleep(1000);
-			return $"Hello: {Name}";
-		}
+        // GET: Ajax/Greet
+        [HttpGet]
+        public string Greet(string Name)
+        {
+            Thread.Sleep(3000);
+            return $"Hello: {Name}!";
+        }
 
-		//Post: Ajax/PostGreeet
-		[HttpPost]
-		public string PostGreet(string Name) 
-		{
-			return $"Hello: {Name}";
-		}
+        //POST: Ajax/PostGreet
+        [HttpPost]
+        public string PostGreet(string Name)
+        {
+            return $"Hello: {Name}!";
+        }
 
-		//Post: Ajax/FetchPostGreet
-		[HttpPost]
-		public string FetchPostGreet(Parameter p) 
-		{
-			Thread.Sleep(1000);
-			return $"Hello: {p.Name}";
-		}
+        //POST Ajax/FetchPostGreet
+        [HttpPost]
+        public string FetchPostGreet(Parameter p)
+        {
+            Thread.Sleep(3000);
+            return $"Hello: {p.Name}";
+        }
 
-		//Post: Ajax/CheckName
-		[HttpPost]
-		public string CheckName(string Name)
-		{
-			bool Exist=_context.Employees.Any (x=>x.FirstName==Name);
-			return Exist ?"true" : "false" ;
-		}
+        //POST: Ajax/CheckName
+        [HttpPost]
+        public string CheckName(string FirstName)
+        {
+            bool Exists=_context.Employees.Any(e => e.FirstName == FirstName);
+            return Exists ? "true" : "false";
+        }
 
-		//Post: Ajax/FetchCheckName
-		[HttpPost]
-		public string FetchCheckName(Parameter p)
-		{
-			bool Exist = _context.Employees.Any(x => x.FirstName == p.Name);
-			return Exist ? "true" : "false";
-		}
-
-	}
+        //POST: Ajax/FetchCheckName
+        [HttpPost]
+        public string FetchCheckName(Parameter p)
+        {
+            bool Exists = _context.Employees.Any(e => e.FirstName == p.Name);
+            return Exists ? "true" : "false";
+        }
+    }
 }

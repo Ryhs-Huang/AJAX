@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WebFront.Models
+namespace EmployeeService.Models
 {
     public partial class NorthwindContext : DbContext
     {
