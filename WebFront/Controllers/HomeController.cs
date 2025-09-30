@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebFront.Models;
@@ -60,6 +61,7 @@ namespace WebFront.Controllers
             HttpResponseMessage Response = await Client.GetAsync(Uri);
             Response.EnsureSuccessStatusCode();
             string Data = await Response.Content.ReadAsStringAsync();
+            ExchangeRate[] Rates=JsonSerializer.Deserialize<ExchangeRate[]>(Data);
 			return Data;
 
 		}
